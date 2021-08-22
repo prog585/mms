@@ -7,7 +7,6 @@ import Profile from "views/admin/Profile.js";
 import Register from "views/auth/Register.js";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import FlashOn from "@material-ui/icons/FlashOn";
 import Grain from "@material-ui/icons/Grain";
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import Person from "@material-ui/icons/Person";
@@ -15,12 +14,7 @@ import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 
 var routes = [
-  {
-    href: "#pablo",
-    name: "Upgrade to pro",
-    icon: FlashOn,
-    upgradeToPro: true,
-  },
+ 
   {
     path: "/index",
     name: "Dashboard",

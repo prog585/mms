@@ -1,8 +1,9 @@
 // core components
 import Dashboard from "views/admin/Dashboard.js";
+import Assets from "views/admin/Assets.js";
 import Icons from "views/admin/Icons.js";
+
 import Login from "views/auth/Login.js";
-import Maps from "views/admin/Maps.js";
 import Profile from "views/admin/Profile.js";
 import Register from "views/auth/Register.js";
 
@@ -24,19 +25,19 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/icons",
+    path: "/assets",
     name: "Assets",
     icon: Grain,
     iconColor: "Primary",
-    component: Icons,
+    component: Assets,
     layout: "/admin",
   },
   {
-    path: "/maps",
+    path: "/icons",
     name: "Support",
     icon: ContactSupportIcon,
     iconColor: "Warning",
-    component: Maps,
+    component: Icons,
     layout: "/admin",
   },
   {

@@ -13,8 +13,16 @@ import "assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+
+import { reducers } from './reducers';
+
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
+  <Provider store={store}>
   <ThemeProvider theme={theme}>
     {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
     <CssBaseline />
@@ -25,6 +33,6 @@ ReactDOM.render(
         <Redirect from="/" to="/admin/index" />
       </Switch>
     </BrowserRouter>
-  </ThemeProvider>,
+  </ThemeProvider></Provider>,
   document.querySelector("#root")
 );

@@ -162,7 +162,7 @@ const theme = createMuiTheme({
         boxShadow: "none",
         transition: "all .2s cubic-bezier(.68,-.55,.265,1.55)",
         fontSize: ".875rem",
-        boxSizing: "border-box",
+        boxSizing: "border-box",      
       },
     },
     MuiInputLabel: {
@@ -174,7 +174,7 @@ const theme = createMuiTheme({
       input: {
         padding: ".625rem .75rem",
         borderTop: "0",
-        borderBottom: "0",
+        borderBottom: "0",        
         borderLeft: "0",
         "&:not(:last-child)": {
           borderTopRightRadius: 0,

@@ -1,49 +1,58 @@
-import React from "react";
+import React, { useEffect } from 'react';
 // javascipt plugin for creating charts
-import Chart from "chart.js";
+import Chart from 'chart.js';
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar } from 'react-chartjs-2';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import { useTheme } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 // @material-ui/icons components
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
+import ArrowDownward from '@material-ui/icons/ArrowDownward';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
+
+import { useDispatch } from 'react-redux';
 
 // core components
-import Header from "components/Headers/Header.js";
+import Header from 'components/Headers/Header.js';
 
 import {
   chartOptions,
   parseOptions,
   chartExample1,
   chartExample2,
-} from "variables/charts.js";
+} from 'variables/charts.js';
 
-import componentStyles from "assets/theme/views/admin/dashboard.js";
+import componentStyles from 'assets/theme/views/admin/dashboard.js';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(componentStyles);
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const assets = useSelector((state) => state.assets);
+
   const classes = useStyles();
   const theme = useTheme();
   const [activeNav, setActiveNav] = React.useState(1);
-  const [chartExample1Data, setChartExample1Data] = React.useState("data1");
+  const [chartExample1Data, setChartExample1Data] = React.useState('data1');
+  useEffect(() => {
+    //dispatch(getAssets());
+  }, [dispatch]);
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
@@ -51,16 +60,16 @@ function Dashboard() {
 
   const toggleNavs = (index) => {
     setActiveNav(index);
-    setChartExample1Data("data" + index);
+    setChartExample1Data('data' + index);
   };
   return (
     <>
-      <Header />
+      <Header assets={assets} />
       {/* Page content */}
       <Container
         maxWidth={false}
         component={Box}
-        marginTop="-6rem"
+        marginTop='-6rem'
         classes={{ root: classes.containerRoot }}
       >
         <Grid container>
@@ -69,12 +78,12 @@ function Dashboard() {
             xs={12}
             xl={8}
             component={Box}
-            marginBottom="3rem!important"
+            marginBottom='3rem!important'
             classes={{ root: classes.gridItemRoot }}
           >
             <Card
               classes={{
-                root: classes.cardRoot + " " + classes.cardRootBgGradient,
+                root: classes.cardRoot + ' ' + classes.cardRootBgGradient,
               }}
             >
               <CardHeader
@@ -82,60 +91,60 @@ function Dashboard() {
                   <Grid
                     container
                     component={Box}
-                    alignItems="center"
-                    justifyContent="space-between"
+                    alignItems='center'
+                    justifyContent='space-between'
                   >
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
                         component={Typography}
-                        variant="h6"
-                        letterSpacing=".0625rem"
-                        marginBottom=".25rem!important"
+                        variant='h6'
+                        letterSpacing='.0625rem'
+                        marginBottom='.25rem!important'
                         className={classes.textUppercase}
                       >
-                        <Box component="span" color={theme.palette.gray[400]}>
+                        <Box component='span' color={theme.palette.gray[400]}>
                           Overview
                         </Box>
                       </Box>
                       <Box
                         component={Typography}
-                        variant="h2"
-                        marginBottom="0!important"
+                        variant='h2'
+                        marginBottom='0!important'
                       >
-                        <Box component="span" color={theme.palette.white.main}>
+                        <Box component='span' color={theme.palette.white.main}>
                           Support Performance
                         </Box>
                       </Box>
                     </Grid>
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
-                        justifyContent="flex-end"
-                        display="flex"
-                        flexWrap="wrap"
+                        justifyContent='flex-end'
+                        display='flex'
+                        flexWrap='wrap'
                       >
                         <Button
-                          variant="contained"
-                          color="primary"
+                          variant='contained'
+                          color='primary'
                           component={Box}
-                          marginRight="1rem!important"
+                          marginRight='1rem!important'
                           onClick={() => toggleNavs(1)}
                           classes={{
                             root:
                               activeNav === 1
-                                ? ""
+                                ? ''
                                 : classes.buttonRootUnselected,
                           }}
                         >
                           Month
                         </Button>
                         <Button
-                          variant="contained"
-                          color="primary"
+                          variant='contained'
+                          color='primary'
                           onClick={() => toggleNavs(2)}
                           classes={{
                             root:
                               activeNav === 2
-                                ? ""
+                                ? ''
                                 : classes.buttonRootUnselected,
                           }}
                         >
@@ -148,7 +157,7 @@ function Dashboard() {
                 classes={{ root: classes.cardHeaderRoot }}
               ></CardHeader>
               <CardContent>
-                <Box position="relative" height="350px">
+                <Box position='relative' height='350px'>
                   <Line
                     data={chartExample1[chartExample1Data]}
                     options={chartExample1.options}
@@ -162,30 +171,30 @@ function Dashboard() {
             <Card classes={{ root: classes.cardRoot }}>
               <CardHeader
                 title={
-                  <Box component="span" color={theme.palette.gray[600]}>
+                  <Box component='span' color={theme.palette.gray[600]}>
                     Performance
                   </Box>
                 }
-                subheader="Total Devices"
+                subheader='Total Devices'
                 classes={{ root: classes.cardHeaderRoot }}
                 titleTypographyProps={{
                   component: Box,
-                  variant: "h6",
-                  letterSpacing: ".0625rem",
-                  marginBottom: ".25rem!important",
+                  variant: 'h6',
+                  letterSpacing: '.0625rem',
+                  marginBottom: '.25rem!important',
                   classes: {
                     root: classes.textUppercase,
                   },
                 }}
                 subheaderTypographyProps={{
                   component: Box,
-                  variant: "h2",
-                  marginBottom: "0!important",
-                  color: "initial",
+                  variant: 'h2',
+                  marginBottom: '0!important',
+                  color: 'initial',
                 }}
               ></CardHeader>
               <CardContent>
-                <Box position="relative" height="350px">
+                <Box position='relative' height='350px'>
                   <Bar
                     data={chartExample2.data}
                     options={chartExample2.options}
@@ -195,13 +204,13 @@ function Dashboard() {
             </Card>
           </Grid>
         </Grid>
-        <Grid container component={Box} marginTop="3rem">
+        <Grid container component={Box} marginTop='3rem'>
           <Grid
             item
             xs={12}
             xl={8}
             component={Box}
-            marginBottom="3rem!important"
+            marginBottom='3rem!important'
             classes={{ root: classes.gridItemRoot }}
           >
             <Card
@@ -214,28 +223,28 @@ function Dashboard() {
                   <Grid
                     container
                     component={Box}
-                    alignItems="center"
-                    justifyContent="space-between"
+                    alignItems='center'
+                    justifyContent='space-between'
                   >
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
                         component={Typography}
-                        variant="h3"
-                        marginBottom="0!important"
+                        variant='h3'
+                        marginBottom='0!important'
                       >
                         Page visits
                       </Box>
                     </Grid>
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
-                        justifyContent="flex-end"
-                        display="flex"
-                        flexWrap="wrap"
+                        justifyContent='flex-end'
+                        display='flex'
+                        flexWrap='wrap'
                       >
                         <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
+                          variant='contained'
+                          color='primary'
+                          size='small'
                         >
                           See all
                         </Button>
@@ -248,8 +257,8 @@ function Dashboard() {
               <TableContainer>
                 <Box
                   component={Table}
-                  alignItems="center"
-                  marginBottom="0!important"
+                  alignItems='center'
+                  marginBottom='0!important'
                 >
                   <TableHead>
                     <TableRow>
@@ -257,7 +266,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -267,7 +276,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -277,7 +286,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -287,7 +296,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -301,12 +310,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         /argon/
                       </TableCell>
@@ -319,13 +328,13 @@ function Dashboard() {
                       <Box
                         component={TableCell}
                         className={classes.tableCellRoot}
-                        marginBottom="-2px"
+                        marginBottom='-2px'
                       >
                         <Box
                           component={ArrowUpward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
+                          width='1rem!important'
+                          height='1rem!important'
+                          marginRight='1rem'
                           color={theme.palette.success.main}
                         />
                         46,53%
@@ -336,12 +345,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         /argon/index.html
                       </TableCell>
@@ -354,13 +363,13 @@ function Dashboard() {
                       <Box
                         component={TableCell}
                         className={classes.tableCellRoot}
-                        marginBottom="-2px"
+                        marginBottom='-2px'
                       >
                         <Box
                           component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
+                          width='1rem!important'
+                          height='1rem!important'
+                          marginRight='1rem'
                           color={theme.palette.warning.main}
                         />
                         46,53%
@@ -371,12 +380,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         /argon/charts.html
                       </TableCell>
@@ -389,13 +398,13 @@ function Dashboard() {
                       <Box
                         component={TableCell}
                         className={classes.tableCellRoot}
-                        marginBottom="-2px"
+                        marginBottom='-2px'
                       >
                         <Box
                           component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
+                          width='1rem!important'
+                          height='1rem!important'
+                          marginRight='1rem'
                           color={theme.palette.warning.main}
                         />
                         36,49%
@@ -406,12 +415,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         /argon/tables.html
                       </TableCell>
@@ -424,13 +433,13 @@ function Dashboard() {
                       <Box
                         component={TableCell}
                         className={classes.tableCellRoot}
-                        marginBottom="-2px"
+                        marginBottom='-2px'
                       >
                         <Box
                           component={ArrowUpward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
+                          width='1rem!important'
+                          height='1rem!important'
+                          marginRight='1rem'
                           color={theme.palette.success.main}
                         />
                         50,87%
@@ -441,14 +450,14 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         /argon/profile.html
                       </TableCell>
@@ -456,7 +465,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
                       >
@@ -466,7 +475,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
                       >
@@ -476,16 +485,16 @@ function Dashboard() {
                         component={TableCell}
                         className={
                           classes.tableCellRoot +
-                          " " +
+                          ' ' +
                           classes.borderBottomUnset
                         }
-                        marginBottom="-2px"
+                        marginBottom='-2px'
                       >
                         <Box
                           component={ArrowDownward}
-                          width="1rem!important"
-                          height="1rem!important"
-                          marginRight="1rem"
+                          width='1rem!important'
+                          height='1rem!important'
+                          marginRight='1rem'
                           color={theme.palette.error.main}
                         />
                         46,53%
@@ -503,28 +512,28 @@ function Dashboard() {
                   <Grid
                     container
                     component={Box}
-                    alignItems="center"
-                    justifyContent="space-between"
+                    alignItems='center'
+                    justifyContent='space-between'
                   >
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
                         component={Typography}
-                        variant="h3"
-                        marginBottom="0!important"
+                        variant='h3'
+                        marginBottom='0!important'
                       >
                         Social traffic
                       </Box>
                     </Grid>
-                    <Grid item xs="auto">
+                    <Grid item xs='auto'>
                       <Box
-                        justifyContent="flex-end"
-                        display="flex"
-                        flexWrap="wrap"
+                        justifyContent='flex-end'
+                        display='flex'
+                        flexWrap='wrap'
                       >
                         <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
+                          variant='contained'
+                          color='primary'
+                          size='small'
                         >
                           See all
                         </Button>
@@ -537,8 +546,8 @@ function Dashboard() {
               <TableContainer>
                 <Box
                   component={Table}
-                  alignItems="center"
-                  marginBottom="0!important"
+                  alignItems='center'
+                  marginBottom='0!important'
                 >
                   <TableHead>
                     <TableRow>
@@ -546,7 +555,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -556,7 +565,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       >
@@ -566,7 +575,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootHead,
                         }}
                       ></TableCell>
@@ -578,12 +587,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         Facebook
                       </TableCell>
@@ -591,13 +600,13 @@ function Dashboard() {
                         1,480
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
+                        <Box display='flex' alignItems='center'>
+                          <Box component='span' marginRight='.5rem'>
                             60%
                           </Box>
-                          <Box width="100%">
+                          <Box width='100%'>
                             <LinearProgress
-                              variant="determinate"
+                              variant='determinate'
                               value={60}
                               classes={{
                                 root: classes.linearProgressRoot,
@@ -613,12 +622,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         Facebook
                       </TableCell>
@@ -626,13 +635,13 @@ function Dashboard() {
                         5,480
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
+                        <Box display='flex' alignItems='center'>
+                          <Box component='span' marginRight='.5rem'>
                             70%
                           </Box>
-                          <Box width="100%">
+                          <Box width='100%'>
                             <LinearProgress
-                              variant="determinate"
+                              variant='determinate'
                               value={70}
                               classes={{
                                 root: classes.linearProgressRoot,
@@ -648,12 +657,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         Google
                       </TableCell>
@@ -661,13 +670,13 @@ function Dashboard() {
                         4,807
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
+                        <Box display='flex' alignItems='center'>
+                          <Box component='span' marginRight='.5rem'>
                             80%
                           </Box>
-                          <Box width="100%">
+                          <Box width='100%'>
                             <LinearProgress
-                              variant="determinate"
+                              variant='determinate'
                               value={80}
                               classes={{
                                 root: classes.linearProgressRoot,
@@ -683,12 +692,12 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         Instagram
                       </TableCell>
@@ -696,13 +705,13 @@ function Dashboard() {
                         3,678
                       </TableCell>
                       <TableCell classes={{ root: classes.tableCellRoot }}>
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
+                        <Box display='flex' alignItems='center'>
+                          <Box component='span' marginRight='.5rem'>
                             75%
                           </Box>
-                          <Box width="100%">
+                          <Box width='100%'>
                             <LinearProgress
-                              variant="determinate"
+                              variant='determinate'
                               value={75}
                               classes={{
                                 root: classes.linearProgressRoot,
@@ -718,14 +727,14 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.tableCellRootBodyHead +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
-                        component="th"
-                        variant="head"
-                        scope="row"
+                        component='th'
+                        variant='head'
+                        scope='row'
                       >
                         twitter
                       </TableCell>
@@ -733,7 +742,7 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
                       >
@@ -743,17 +752,17 @@ function Dashboard() {
                         classes={{
                           root:
                             classes.tableCellRoot +
-                            " " +
+                            ' ' +
                             classes.borderBottomUnset,
                         }}
                       >
-                        <Box display="flex" alignItems="center">
-                          <Box component="span" marginRight=".5rem">
+                        <Box display='flex' alignItems='center'>
+                          <Box component='span' marginRight='.5rem'>
                             30%
                           </Box>
-                          <Box width="100%">
+                          <Box width='100%'>
                             <LinearProgress
-                              variant="determinate"
+                              variant='determinate'
                               value={30}
                               classes={{
                                 root: classes.linearProgressRoot,

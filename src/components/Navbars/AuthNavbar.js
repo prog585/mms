@@ -36,7 +36,7 @@ export default function AuthNavbar() {
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+ 
   const handleMenuClose = () => {
     setAnchorEl(null);
   };

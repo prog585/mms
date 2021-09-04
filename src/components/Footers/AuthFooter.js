@@ -1,42 +1,42 @@
-import React from "react";
+import React from 'react';
 
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
 
 // core components
-import componentStyles from "assets/theme/components/auth-footer.js";
+import componentStyles from 'assets/theme/components/auth-footer.js';
 
 const useStyles = makeStyles(componentStyles);
 
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box component="footer" width="100%" paddingTop="1rem">
+    <Box component='footer' width='100%' paddingTop='1rem'>
       <Container
         component={Box}
-        maxWidth="xl"
-        display="flex!important"
-        alignItems="center"
+        maxWidth='xl'
+        display='flex!important'
+        alignItems='center'
         classes={{
           root:
-            classes.justifyContentCenter + " " + classes.flexDirectionColumn,
+            classes.justifyContentCenter + ' ' + classes.flexDirectionColumn,
         }}
       >
         <Grid item xs={12} xl={6}>
-          <div className={classes.copyrightWrapper}>
-            © {new Date().getFullYear()}{" "}
+          <div className={classes.footerLinks}>
+            © {new Date().getFullYear()}{' '}
             <a
-              className={classes.copyrightLink}
-              href="https://mmsouth.org.nz/"
-              rel="noopener noreferrer"
-              target="_blank"
+              className={classes.footerLinks}
+              href='https://mmsouth.org.nz/'
+              rel='noopener noreferrer'
+              target='_blank'
             >
-               MMS Solutions
+              MMS Solutions
             </a>
           </div>
         </Grid>
@@ -46,42 +46,42 @@ const Footer = () => {
           xs={12}
           xl={6}
           component={Box}
-          display="flex"
-          justifyContent="flex-end"
+          display='flex'
+          justifyContent='flex-end'
           classes={{
             root:
-              classes.justifyContentCenter + " " + classes.flexDirectionColumn,
+              classes.justifyContentCenter + ' ' + classes.flexDirectionColumn,
           }}
         >
           <Box
             component={List}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
             classes={{
               root:
                 classes.justifyContentCenter +
-                " " +
+                ' ' +
                 classes.flexDirectionColumn,
             }}
           >
             <ListItem
-              component="a"
-              href="https://www.creative-tim.com?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
+              component='a'
+              href='https://mmsouth.org.nz'
+              rel='noopener noreferrer'
+              target='_blank'
               classes={{
                 root: classes.listItemRoot,
               }}
             >
-              Creative Tim
+              Methodist Mission Southern
             </ListItem>
 
             <ListItem
-              component="a"
-              href="https://mmsouth.org.nz/about-us/"
-              rel="noopener noreferrer"
-              target="_blank"
+              component='a'
+              href='https://mmsouth.org.nz/about-us/'
+              rel='noopener noreferrer'
+              target='_blank'
               classes={{
                 root: classes.listItemRoot,
               }}
@@ -90,27 +90,15 @@ const Footer = () => {
             </ListItem>
 
             <ListItem
-              component="a"
-              href="http://blog.creative-tim.com?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
+              component='a'
+              href='https://mmsouth.org.nz/what-we-do/'
+              rel='noopener noreferrer'
+              target='_blank'
               classes={{
                 root: classes.listItemRoot,
               }}
             >
-              Blog
-            </ListItem>
-
-            <ListItem
-              component="a"
-              href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md?ref=adr-admin-footer"
-              rel="noopener noreferrer"
-              target="_blank"
-              classes={{
-                root: classes.listItemRoot,
-              }}
-            >
-              MIT License
+              What we do
             </ListItem>
           </Box>
         </Grid>

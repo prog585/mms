@@ -30,12 +30,12 @@ const Item = ({ asset, setCurrentId }) => {
         title={asset.assetId}
       />
       <div className={classes.overlay}>
-        <Typography variant='h6'>{asset.deviceType}</Typography>
-        <Typography variant='body2'>
+        <Typography variant='body2'> {asset.deviceType}</Typography>
+        <Typography variant='h5'>
           {moment(asset.createdAt).fromNow()}
         </Typography>
       </div>
-      <div className={classes.overlay2}>
+      <div className={classes.overlay2} style={{ marginRight: '10px' }}>
         <Button
           style={{ color: 'white' }}
           size='small'
@@ -46,19 +46,24 @@ const Item = ({ asset, setCurrentId }) => {
       </div>
       <div className={classes.details}>
         <Typography variant='body2' color='textSecondary' component='h2'>
-          Make/Model: {asset.make}/{asset.model}{' '}
+          Make: {asset.make}
+        </Typography>
+        <Typography variant='body2' color='textSecondary' component='h2'>
+          Model: {asset.model}
         </Typography>
       </div>
+
       <Typography
         className={classes.title}
         gutterBottom
         variant='h5'
         component='h2'
       >
-        {asset.status}
+        Status: {asset.status}
       </Typography>
       <CardContent>
         <Typography variant='body2' color='textSecondary' component='p'>
+          {' '}
           Assigned To: {asset.assignedTo}
         </Typography>
       </CardContent>
@@ -66,7 +71,9 @@ const Item = ({ asset, setCurrentId }) => {
         <Button
           size='small'
           color='primary'
-          onClick={() => dispatch(deleteAsset(asset._id))}
+          onClick={() => {
+            dispatch(deleteAsset(asset._id));
+          }}
         >
           <DeleteIcon fontSize='small' /> Delete
         </Button>

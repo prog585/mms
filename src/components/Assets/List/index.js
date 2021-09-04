@@ -19,7 +19,7 @@ const List = ({ setCurrentId }) => {
       spacing={3}
     >
       {assets.map((asset) => (
-        <Grid key={asset._id} item xs={12} sm={6} md={6}>
+        <Grid key={asset._id} item xs={12} sm={6} md={4}>
           <Item asset={asset} setCurrentId={setCurrentId} />
         </Grid>
       ))}

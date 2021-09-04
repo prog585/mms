@@ -1,64 +1,62 @@
-import boxShadows from "assets/theme/box-shadow.js";
+import boxShadows from 'assets/theme/box-shadow.js';
 
 const componentStyles = (theme) => ({
   cardRoot: {
-    boxShadow: boxShadows.boxShadow + "!important",
+    boxShadow: boxShadows.boxShadow + '!important',
   },
   cardHeader: {
-    backgroundColor: "initial",
+    backgroundColor: 'initial',
   },
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      
-    },flexGrow: 1,
-   
+    },
+    flexGrow: 1,
   },
- 
+
   paper: {
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
   button: {
-    verticalAlign: "middle",
+    verticalAlign: 'middle',
     backgroundColor: theme.palette.gray[200],
-    outline: "none!important",
-    cursor: "pointer",
-    textDecoration: "none",
-    "&:hover": {
+    outline: 'none!important',
+    cursor: 'pointer',
+    textDecoration: 'none',
+    '&:hover': {
       backgroundColor: theme.palette.white.main,
       boxShadow: boxShadows.iconsPageButtonBoxShadow,
     },
-    "& i": {
-      fontSize: "1.5rem",
-      boxSizing: "initial",
-      verticalAlign: "middle",
+    '& i': {
+      fontSize: '1.5rem',
+      boxSizing: 'initial',
+      verticalAlign: 'middle',
       color: theme.palette.gray[800],
     },
-    "& span": {
-      fontSize: ".875rem",
-      lineHeight: "1.5",
-      display: "inline-block",
-      overflow: "hidden",
-      marginLeft: "16px",
-      verticalAlign: "middle",
-      whiteSpace: "nowrap",
-      textOverflow: "ellipsis",
+    '& span': {
+      fontSize: '.875rem',
+      lineHeight: '1.5',
+      display: 'inline-block',
+      overflow: 'hidden',
+      marginLeft: '16px',
+      verticalAlign: 'middle',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
       color: theme.palette.gray[800],
     },
   },
   containerRoot: {
-    [theme.breakpoints.up("md")]: {
-      paddingLeft: "39px",
-      paddingRight: "39px",
+    [theme.breakpoints.up('md')]: {
+      paddingLeft: '39px',
+      paddingRight: '39px',
     },
-    width:'70%'
+    width: '90%',
   },
   iframe: {
-    
-    height: "500px",
-    border: "0",
+    height: '500px',
+    border: '0',
   },
 });
 

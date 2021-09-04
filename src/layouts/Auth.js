@@ -1,19 +1,18 @@
-import React from "react";
-import { useLocation, Route, Switch, Redirect } from "react-router-dom";
+import React from 'react';
+import { useLocation, Route, Switch, Redirect } from 'react-router-dom';
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 // core components
-import AuthNavbar from "components/Navbars/AuthNavbar.js";
-import AuthHeader from "components/Headers/AuthHeader.js";
-import AuthFooter from "components/Footers/AuthFooter.js";
+import AuthHeader from 'components/Headers/AuthHeader.js';
+import AuthFooter from 'components/Footers/AuthFooter.js';
 
-import routes from "routes.js";
+import routes from 'routes.js';
 
-import componentStyles from "assets/theme/layouts/auth.js";
+import componentStyles from 'assets/theme/layouts/auth.js';
 
 const useStyles = makeStyles(componentStyles);
 
@@ -36,7 +35,7 @@ const Auth = () => {
 
   const getRoutes = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/auth") {
+      if (prop.layout === '/auth') {
         return (
           <Route
             path={prop.layout + prop.path}
@@ -52,22 +51,21 @@ const Auth = () => {
 
   return (
     <>
-      <div className="main-content" ref={mainContent}>
-        <AuthNavbar />
+      <div className='main-content' ref={mainContent}>
         <AuthHeader />
         {/* Page content */}
         <Container
           component={Box}
-          maxWidth="xl"
-          marginTop="-8rem"
-          paddingBottom="3rem"
-          position="relative"
-          zIndex="101"
+          maxWidth='xl'
+          marginTop='-8rem'
+          paddingBottom='3rem'
+          position='relative'
+          zIndex='101'
         >
-          <Box component={Grid} container justifyContent="center">
+          <Box component={Grid} container justifyContent='center'>
             <Switch>
               {getRoutes(routes)}
-              <Redirect from="*" to="/auth/login" />
+              <Redirect from='*' to='/auth/login' />
             </Switch>
           </Box>
         </Container>
